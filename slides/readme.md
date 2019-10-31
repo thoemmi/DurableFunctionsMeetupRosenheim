@@ -1,78 +1,132 @@
 # Durable Functions
 
-## Wer wir sind
+## Wer wir sind | Together
 
-* Robert Meyer 
+- Robert Meyer
   @roeb
 
-* Thomas Freudenberg
+- Thomas Freudenberg
   @thoemmi
 
 DOMUS Software AG
 
 ---
 
-## Azure Functions
+## Microsoft Serverless World _(5min)_ | Together
 
-![Azure Function](images/azure-functions.png "Azure Function")
+- What the hack is serverless?
 
-* Run small pieces of code serverless
-* Flexibel Deployment
-* Triggered by
-  * HTTP requests
-  * Timer
-  * Event Grid
-  * Queues
-  * ...
-* C#, F#, JavaScript, PowerShell, and Python
+![Azure Function](images/evolution_of_cloud.png 'Cloud Evolution')
+
+- Microsoft Serverless Plattform
+
+![Azure Function](images/serverless_plattform.png 'Serverless Plattform')
+
+- Azure Functions, Logic Apps, AppInsights, EventGrid (Serverless Infrastructure), Durable Functions, Serverless SQL Server,
 
 ---
 
-## Demo Azure Function
+## Azure Functions _(10min)_ | Thomas
+
+![Azure Function](images/azure-functions.png 'Azure Function')
+
+- Run small pieces of code serverless and short-term
+- AppServicePlan vs Consumption Plan
+- Flexibel Deployment
+- Triggers and Bindings
+  - Triggers
+    - HTTP requests
+    - Timer
+    - Event Grid
+    - Queues
+    - ...
+  - Bindings
+    - CosmosDb
+    - Table Storage
+    - Queue Storage
+- C#, F#, JavaScript, PowerShell, and Python
+
+---
+
+## Demo Azure Function _(5min)_ | Thomas
+
+- Simple Functions in JS/Powershell and CS#
 
 ---
 
 ## Complex scenarios
 
-![Function Chaining](images/function-chaining.png "Function Chaining")
+![Function Chaining](images/function-chaining.png 'Function Chaining')
 
-* Monitoring
-* Where am I?
-
----
-
-## Durable Functions
-
-* Extension to Azure Function
-* Orchestration functions
-* Track workflow from start to completion
-* Fan out/in
-* React to external events
-* Timeout handling
-* Dehydration/Hydration
-* C#, F#, and JavaScript
+- Monitoring
+- Where am I?
 
 ---
 
-## Demo Durable Functions
+## Durable Functions _(20min)_ | Robert
 
-simple workflow w/ JavaScript
+- Extension to Azure Function - Durable Task Framework
+- C#, F#, and JavaScript
+- How to start a orchestration?
+  - `DurableOrchestrationClient` in `HttpTrigger` oder `ServiceBusTrigger` Function
+  - Explain InstanceId
+- Orchestration functions
+- Activity functions
+- Replay Pattern inside Durable Functions
+- Track workflow from start to completion / Stateful (Azure Storage)
+- Patterns
+
+  - Function chaining
+  - Fan out/in
+  - HTTP Async Response
+  - React to external events (Human interaction)
+  - Actors
+
+- Timeout handling
+- Dehydration/Hydration
+- Durable REST API
 
 ---
 
-## Demo Durable Functions
+## Demo Durable Functions _(5min)_ | Robert
 
-More complex workflow w/ C#
-
----
-
-## Durable Entities
-
-* ...
+Simple workflow (Aprovall Workflow)
 
 ---
 
-## Pains
+## Demo Durable Functions _(10min)_ | Robert
 
-* Versioning
-* ...
+- More complex workflow w/ C# _(Should we show VA Workflow here?)_
+- Durable Dungeons
+
+---
+
+## Durable Functions 2.0 _(10min)_ | Robert
+
+- Durable Entities
+  - Durable Entities REST-API
+- Interface implementierung from IOrchestrationClient, IOrchestrationContext, ...
+  | Alter Typ | Neuer Typ |
+  | ------------------------------- | ---------------------------- |
+  | DurableOrchestrationClientBase | IDurableOrchestrationClient |
+  | DurableOrchestrationContextBase | IDurableOrchestrationContext |
+  | DurableActivityContextBase | IDurableActivityContext |
+  | OrchestrationClientAttribute | DurableClientAttribute |
+- Durable HTTP (Call from HTTP-APIs directly in the orchestration)
+- Alternate storage providers
+
+  - Azure Service Bus
+  - In-Memory Emulator
+  - Redis
+
+- DEMO: Durable Entities -> Simple Approval WF with Durable Entities
+
+---
+
+## Pains _(10min+)_ | Together
+
+- How to fail with serverless
+- KeepAlive for normal functions
+- Monitoring
+- Versioning
+- ...
